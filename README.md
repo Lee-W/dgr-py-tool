@@ -1,6 +1,6 @@
-# dgr-java-tool
+# dgr-python-tool
 
-A tool for data garage usage using java
+A tool for data garage usage using python
 
 ## Sample
 
