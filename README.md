@@ -60,8 +60,6 @@ fetchAll('52e12d31203b41ab5d14964b')
 fetchCustom('52e12d31203b41ab5d14964b', {'limit': '3'})
 ```
 
-## Develop 
-
 
 ## License
 
