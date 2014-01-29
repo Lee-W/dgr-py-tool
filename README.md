@@ -48,7 +48,7 @@ fetchAll('52e12d31203b41ab5d14964b')
     * Data id (String) : 
         
 
-    * data (Map) : 
+    * data (Object) : 
         - limit: You can limit the data set you are pulling from remote, should be a number
         - fields: Select the fields you want to get, should be a string seperate by comma (for example: `Format, Valuie, ...`)
         - skip: You could also skip the record you don't want( for example: `skip: 2`, that means the data will start from the 3)
