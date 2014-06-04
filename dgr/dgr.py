@@ -7,12 +7,12 @@ class DataGarageAPI():
         self.filters = {'selector':'', 'sort':'', 'skip':'', 'limits':'', 'fields':''}
 
     def fetchAll(self, dataID, returnList = True):
-	req = requests.get(self.datagarageHomePageURL + dataID)
-	return req.json() if returnList else req.text
+        req = requests.get(self.datagarageHomePageURL + "/api/" +dataID)
+        return req.json() if returnList else req.text
 
     def fetchCustom(self, dataID, form, returnList = True):
-	res = requests.get(self.datagarageHomePageURL + dataID, params=form)
-	return res.json() if returnList else req.text
+        res = requests.get(self.datagarageHomePageURL + "/api/" + dataID, params=form)
+        return res.json() if returnList else req.text
 
     def setURL(self, URL):
         self.apiURL = URL
@@ -74,4 +74,5 @@ if __name__ == '__main__':
 
     #example 2
     print (dgAPI.fetchAll("5365dee31bc6e9d9463a0057"))
-    print (dgAPI.fetchCustom("5365dee31bc6e9d9463a0057", {"limits":"3"})
+    # print (dgAPI.fetchCustom("5365dee31bc6e9d9463a0057"), {"limits":"3"})
+    #
