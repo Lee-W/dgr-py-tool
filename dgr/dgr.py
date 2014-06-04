@@ -4,7 +4,7 @@ class DataGarageAPI():
     def __init__(self):
         self.datagarageHomePageURL = "http://www.datagarage.io"
         self.apiURL = ""
-        self.filters = {'selector':'', 'sort':'', 'skip':'', 'limits':'', 'fields':''}
+        self.filters = {'selector':'', 'sort':'', 'skip':'', 'limit':'', 'fields':''}
 
     def fetchAll(self, dataID, returnList = True):
         req = requests.get(self.datagarageHomePageURL + "/api/" +dataID)
@@ -42,7 +42,7 @@ class DataGarageAPI():
         self.filters['skip'] = str(skipNum)
 
     def setLimits(self, limitNum):
-        self.filters['limits'] = str(limitNum)
+        self.filters['limit'] = str(limitNum)
 
     def getRawData(self, returnList = True):
         req = requests.get(self.apiURL)
@@ -74,5 +74,5 @@ if __name__ == '__main__':
 
     #example 2
     print (dgAPI.fetchAll("5365dee31bc6e9d9463a0057"))
-    # print (dgAPI.fetchCustom("5365dee31bc6e9d9463a0057"), {"limits":"3"})
-    #
+    print (dgAPI.fetchCustom("5365dee31bc6e9d9463a0057", {"limit":"3"}))
+
