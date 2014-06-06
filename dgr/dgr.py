@@ -41,7 +41,7 @@ class DataGarageAPI():
     def setSkip(self, skipNum):
         self.filters['skip'] = str(skipNum)
 
-    def setLimits(self, limitNum):
+    def setLimit(self, limitNum):
         self.filters['limit'] = str(limitNum)
 
     def getRawData(self, returnList = True):
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     dgAPI.setSort('車位總價元', acs = True)
     dgAPI.setFields(['總價元'])
     dgAPI.setSkip(0)
-    dgAPI.setLimits(7)
+    dgAPI.setLimit(7)
 
     print (dgAPI.getFilteredData(returnList = True))
     dgAPI.resetFilter()
