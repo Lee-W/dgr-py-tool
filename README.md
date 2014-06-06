@@ -61,8 +61,98 @@ fetchAll('52e12d31203b41ab5d14964b')
 fetchCustom('52e12d31203b41ab5d14964b', {'limit': '3'})
 ```
 
-###
+###Set URL
 
+
+- Argument
+    * URL :
+
+```python
+setURL("http://www.datagarage.io/api/5365dee31bc6e9d9463a0057")
+```
+
+
+#Set DataID
+
+
+- Argument
+    * dataID :
+
+```python
+setURL("5365dee31bc6e9d9463a0057")
+```
+
+#Set Selector
+
+
+- Argument
+    * condition
+
+```python
+setSelector([["鄉鎮市區", "=", "文山區"], ["土地區段位置或建物區門牌","=","/辛亥路/"], ["交易年月", ">=", 10300]])
+```
+
+#Set Sort
+
+
+- Arguments
+    * fields
+    * acs
+
+```python
+setSort('車位總價元', acs = True)
+```
+
+#Set skip
+
+
+- Argument
+    * skipNum
+
+```python
+setSkip(5)
+```
+
+#Set limits
+
+
+- Argument
+    * limitNum
+
+```python
+setLimit(10)
+```
+
+#Get raw data
+
+
+- Argument
+    * returnList
+
+- Return : list or string (depends on argument returnList)
+
+```python
+getRawData(True)
+```
+
+#Get filtered data
+
+
+- Argument
+    * returnList
+
+- Return : list or string (depends on argument returnList)
+
+```python
+getFilteredData(True)
+```
+
+
+#Reset filter
+
+```python
+resetFilter()
+```
 
 ## License
 
