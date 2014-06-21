@@ -22,9 +22,11 @@ class DataGarageAPI():
 
     def setURL(self, URL):
         self.apiURL = URL
+        return self
 
     def setDataID(self, dataID):
         self.apiURL = self.datagarageHomePageURL + "/api/"  + dataID
+        return self
 
     def setSelector(self, condition):
         self.filters['selector'] = ''
@@ -35,20 +37,25 @@ class DataGarageAPI():
             self.filters['selector'] += " AND "
             for item in cond:
                 self.filters['selector'] += str(item)
+        return self
 
     def setSort(self, field, acs = True):
         self.filters['sort'] = field + ":" + ("acs" if acs is True else "desc")
+        return self
 
     def setFields(self, fields):
         self.filters['fields'] = fields[0]
         for f in fields[1:]:
             self.filters['fields'] += "," + f
+        return self
 
     def setSkip(self, skipNum):
         self.filters['skip'] = str(skipNum)
+        return self
 
     def setLimit(self, limitNum):
         self.filters['limit'] = str(limitNum)
+        return self
 
     def getRawData(self, returnList = True):
         try:
@@ -75,11 +82,11 @@ if __name__ == '__main__':
     #example 1
     dgAPI.setDataID("5365dee31bc6e9d9463a0057")
 
-    dgAPI.setSelector([["鄉鎮市區", "=", "文山區"], ["土地區段位置或建物區門牌","=","/辛亥路/"], ["交易年月", ">=", 10300]])
-    dgAPI.setSort('車位總價元', acs = True)
-    dgAPI.setFields(['總價元'])
-    dgAPI.setSkip(0)
-    dgAPI.setLimit(7)
+    dgAPI.setSelector([["鄉鎮市區", "=", "文山區"], ["土地區段位置或建物區門牌","=","/辛亥路/"], ["交易年月", ">=", 10300]]) \
+         .setSort('車位總價元', acs = True) \
+         .setFields(['總價元']) \
+         .setSkip(0) \
+         .setLimit(7)
 
     print (dgAPI.getFilteredData(returnList = True))
     dgAPI.resetFilter()
