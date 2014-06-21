@@ -61,7 +61,10 @@ fetchAll('52e12d31203b41ab5d14964b')
 fetchCustom('52e12d31203b41ab5d14964b', {'limit': '3'})
 ```
 
-###Set URL
+-----
+
+####Set URL
+set the url in datagarage
 
 
 - Argument
@@ -72,8 +75,8 @@ setURL("http://www.datagarage.io/api/5365dee31bc6e9d9463a0057")
 ```
 
 
-#Set DataID
-
+####Set DataID
+set data id
 
 - Argument
     * dataID :
@@ -82,7 +85,7 @@ setURL("http://www.datagarage.io/api/5365dee31bc6e9d9463a0057")
 setURL("5365dee31bc6e9d9463a0057")
 ```
 
-#Set Selector
+####Set Selector
 
 
 - Argument

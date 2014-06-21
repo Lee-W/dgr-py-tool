@@ -7,11 +7,17 @@ class DataGarageAPI():
         self.filters = {'selector':'', 'sort':'', 'skip':'', 'limit':'', 'fields':''}
 
     def fetchAll(self, dataID, returnList = True):
-        req = requests.get(self.datagarageHomePageURL + "/api/" +dataID)
+        try:
+            req = requests.get(self.datagarageHomePageURL + "/api/" +dataID)
+        except requests.ConnectionError:
+            print ("Connection Error!")
         return req.json() if returnList else req.text
 
     def fetchCustom(self, dataID, form, returnList = True):
-        res = requests.get(self.datagarageHomePageURL + "/api/" + dataID, params=form)
+        try:
+            res = requests.get(self.datagarageHomePageURL + "/api/" + dataID, params=form)
+        except requests.ConnectionError:
+            print ("Connection Error!")
         return res.json() if returnList else req.text
 
     def setURL(self, URL):
@@ -45,11 +51,17 @@ class DataGarageAPI():
         self.filters['limit'] = str(limitNum)
 
     def getRawData(self, returnList = True):
-        req = requests.get(self.apiURL)
+        try:
+            req = requests.get(self.apiURL)
+        except requests.ConnectionError:
+            print ("Connection Error!")
         return req.json() if returnList else req.text
 
     def getFilteredData(self, returnList = True):
-        req = requests.get(self.apiURL, params = self.filters)
+        try:
+            req = requests.get(self.apiURL, params = self.filters)
+        except requests.ConnectionError:
+            print ("Connection Error!")
         return req.json() if returnList else req.text
 
     def resetFilter(self):
