@@ -1,23 +1,26 @@
 import requests
 
-class DataGarageAPI():
+
+class DataGarageAPI:
     def __init__(self):
         self.datagarageHomePageURL = "http://www.datagarage.io"
         self.apiURL = ""
         self.resetFilter()
 
-    def fetchAll(self, dataID, returnList = True):
+        self.CONNECT_ERROR_MSG = "Connection Error!"
+
+    def fetchAll(self, dataID, returnList=True):
         try:
-            req = requests.get(self.datagarageHomePageURL + "/api/" +dataID)
+            req = requests.get(self.datagarageHomePageURL+"/api/"+dataID)
         except requests.ConnectionError:
-            print ("Connection Error!")
+            print(self.CONNECT_ERROR_MSG)
         return req.json() if returnList else req.text
 
-    def fetchCustom(self, dataID, form, returnList = True):
+    def fetchCustom(self, dataID, form, returnList=True):
         try:
             res = requests.get(self.datagarageHomePageURL + "/api/" + dataID, params=form)
         except requests.ConnectionError:
-            print ("Connection Error!")
+            print(self.CONNECT_ERROR_MSG)
         return res.json() if returnList else res.text
 
     def setURL(self, URL):
@@ -25,7 +28,7 @@ class DataGarageAPI():
         return self
 
     def setDataID(self, dataID):
-        self.apiURL = self.datagarageHomePageURL + "/api/"  + dataID
+        self.apiURL = self.datagarageHomePageURL+"/api/"+dataID
         return self
 
     def setSelector(self, condition):
@@ -39,7 +42,7 @@ class DataGarageAPI():
                 self.filters['selector'] += str(item)
         return self
 
-    def setSort(self, field, acs = True):
+    def setSort(self, field, acs=True):
         self.filters['sort'] = field + ":" + ("acs" if acs is True else "desc")
         return self
 
@@ -57,18 +60,18 @@ class DataGarageAPI():
         self.filters['limit'] = str(limitNum)
         return self
 
-    def getRawData(self, returnList = True):
+    def getRawData(self, returnList=True):
         try:
             req = requests.get(self.apiURL)
         except requests.ConnectionError:
-            print ("Connection Error!")
+            print(self.CONNECT_ERROR_MSG)
         return req.json() if returnList else req.text
 
-    def getFilteredData(self, returnList = True):
+    def getFilteredData(self, returnList=True):
         try:
-            req = requests.get(self.apiURL, params = self.filters)
+            req = requests.get(self.apiURL, params=self.filters)
         except requests.ConnectionError:
-            print ("Connection Error!")
+            print(self.CONNECT_ERROR_MSG)
         return req.json() if returnList else req.text
 
     def resetFilter(self):
